@@ -27,3 +27,22 @@ If you need to built Katapult or Klipper for a Cartographer v3 for Canbus, use t
 * (PA1) GPIO pins to set on bootloader entry
 * Support bootloader entry on double reset
 * (PB5) Status LED GPIO pin
+
+## Get the klipper-mcu service running on a CB2 with the Armbian bookworm release
+BTT has some issues with its Arbian bookworm-based release. Here is the quick and dirty way to get the klipper-mcu serice working from scratch. 
+```
+cd ~/klipper/
+make menuconfig
+```
+Select Linux process
+```
+sudo cp ./scripts/klipper.service /etc/systemd/system/
+echo 'ExecStartPre=/bin/sleep 10' | sudo tee -a /etc/systemd/system/klipper-mcu.service
+sudo systemctl enable klipper-mcu.service
+sudo service klipper stop
+make flash
+sudo sysctl -w kernel.sched_rt_runtime_us=-1
+echo "kernel.sched_rt_runtime_us = -1" | sudo tee /etc/sysctl.d/10-disable-rt-group-limit.conf
+sudo service klipper start
+```
+This will build the klipper-mcu binary, install the service, and make two tweaks to make it work on BTT's OS release. The line about `kernel.sched.rt_runtime_us` is the critical tweak. The line with `ExecStartPre=/bin/sleep 10` causes Klipper to wait a few seconds to start so that the klipper-mcu service can do its work first. 
