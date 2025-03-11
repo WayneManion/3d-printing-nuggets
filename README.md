@@ -48,5 +48,5 @@ sudo service klipper start
 This will build the klipper-mcu binary, install the service, and make two tweaks to make it work on BTT's OS release. The line about `kernel.sched.rt_runtime_us` is the critical tweak. The line with `ExecStartPre=/bin/sleep 10` causes Klipper to wait a few seconds to start so that the klipper-mcu service can do its work first. 
 
 More information:
-https://klipper.discourse.group/t/klipper-mcu-service-fails-to-start/12219
-https://github.com/bigtreetech/CB2/issues/63
+* https://klipper.discourse.group/t/klipper-mcu-service-fails-to-start/12219
+* https://github.com/bigtreetech/CB2/issues/63
