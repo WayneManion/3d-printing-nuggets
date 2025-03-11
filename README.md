@@ -58,4 +58,4 @@ More information:
 `sudo dfu-util -a 0 -D /path/to/katapult.bin --dfuse-address 0x08000000:force:leave -d 0483:df11`
 
 ## Command to flash built Klipper binary onto a Katapult device
-`python3 flashtool.py -i can0 -f /path/to/klipper.bin -u UUIDGOHERE`
+`python3 ~/katapult/scripts/flashtool.py -i can0 -f /path/to/klipper.bin -u UUIDGOHERE`
