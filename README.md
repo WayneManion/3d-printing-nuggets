@@ -29,7 +29,7 @@ If you need to built Katapult or Klipper for a Cartographer v3 for Canbus, use t
 * (PB5) Status LED GPIO pin
 
 ## Get the klipper-mcu service running on a CB2 with the Armbian bookworm release
-BTT has some issues with its Arbian bookworm-based release. Here is the quick and dirty way to get the klipper-mcu serice working from scratch. 
+BTT has some issues with its Arbian bookworm-based release. Here is the quick and dirty way to get the klipper-mcu service working from scratch. 
 ```
 cd ~/klipper/
 make menuconfig
