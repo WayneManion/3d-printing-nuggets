@@ -50,3 +50,12 @@ This will build the klipper-mcu binary, install the service, and make two tweaks
 More information:
 * https://klipper.discourse.group/t/klipper-mcu-service-fails-to-start/12219
 * https://github.com/bigtreetech/CB2/issues/63
+
+## Command to list can0 device
+`~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0`
+
+## Command to flash built Katapult binary to an STM32 device
+`sudo dfu-util -a 0 -D /path/to/katapult.bin --dfuse-address 0x08000000:force:leave -d 0483:df11`
+
+## Command to flash built Klipper binary onto a Katapult device
+`python3 flashtool.py -i can0 -f /path/to/klipper.bin -u UUIDGOHERE`
